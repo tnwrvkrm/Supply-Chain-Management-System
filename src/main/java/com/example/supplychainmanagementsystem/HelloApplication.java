@@ -2,6 +2,7 @@ package com.example.supplychainmanagementsystem;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -22,12 +23,17 @@ public class HelloApplication extends Application {
         TextField searchfield = new TextField();
         Button searchButton = new Button("Search");
 
-        GridPane gridpane = new GridPane();
+        GridPane gridPane = new GridPane();
+        gridPane.setMinSize(bodyPane.getMinWidth(), headerBar-10);
+        gridPane.setVgap(5);
+        gridPane.setHgap(5);
+        gridPane.setAlignment(Pos.CENTER);
+        gridPane.setStyle("-fx-background-color: #C0C0C0");
 
-        gridpane.add(searchfield,0,0);
-        gridpane.add(searchButton,1,0);
+        gridPane.add(searchfield,0,0);
+        gridPane.add(searchButton,1,0);
 
-        return gridpane;
+        return gridPane;
     }
 
     //this is creating a grid structured layout
@@ -39,6 +45,11 @@ public class HelloApplication extends Application {
         PasswordField passwordTextfield = new PasswordField();
 
         GridPane gridPane = new GridPane();
+        gridPane.setMinSize(bodyPane.getMinWidth(), bodyPane.getMinHeight());
+        gridPane.setVgap(5);
+        gridPane.setHgap(5);
+        gridPane.setAlignment(Pos.CENTER);
+        gridPane.setStyle("-fx-background-color: #C0C0C0");
         gridPane.add(emailLabel,0,0);
         gridPane.add(passwordLabel, 0,1);
         gridPane.add(emailTextField, 1,0);
