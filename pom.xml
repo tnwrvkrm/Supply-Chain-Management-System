@@ -61,7 +61,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.example.supplychainmanagementsystem/com.example.supplychainmanagementsystem.HelloApplication
+                                com.example.supplychainmanagementsystem/com.example.supplychainmanagementsystem.SupplyChain
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
