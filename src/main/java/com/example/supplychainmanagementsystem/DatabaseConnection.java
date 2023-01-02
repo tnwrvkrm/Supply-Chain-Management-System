@@ -27,16 +27,27 @@ public class DatabaseConnection {
         return null;
     }
 
-    public static void main(String[] args) {
-        DatabaseConnection databaseConnection = new DatabaseConnection();
-        ResultSet rs = databaseConnection.getQueryTable("SELECT email, first_name FROM CUSTOMER'");
+    public int executeUpdateQuery(String query){
+        Statement statement = getStatement();
         try{
-            while(rs.next()){
-                System.out.println(rs.getString("email") + " " + rs.getString("first_name"));
-            }
-        }catch(Exception e){
+            return statement.executeUpdate(query);
+        }catch (Exception e){
             e.printStackTrace();
         }
+        return 0;
     }
+
+//    testing database connection
+//    public static void main(String[] args) {
+//        DatabaseConnection databaseConnection = new DatabaseConnection();
+//        ResultSet rs = databaseConnection.getQueryTable("SELECT email, first_name FROM CUSTOMER'");
+//        try{
+//            while(rs.next()){
+//                System.out.println(rs.getString("email") + " " + rs.getString("first_name"));
+//            }
+//        }catch(Exception e){
+//            e.printStackTrace();
+//        }
+//    }
 
 }
