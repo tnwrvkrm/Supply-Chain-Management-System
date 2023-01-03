@@ -1,13 +1,11 @@
 package com.example.supplychainmanagementsystem;
 
-import javax.xml.namespace.QName;
-import javax.xml.transform.Result;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.sql.ResultSet;
 
-public class Login {
+public class LoginOrSignUp {
 
     private byte[] getSHA(String input){
         try{
@@ -42,5 +40,16 @@ public class Login {
             e.printStackTrace();
         }
         return null;
+    }
+    public boolean customerSignUp(String firstName, String lastName, String email, String password, String mobile, String address){
+        DatabaseConnection dbCon = new DatabaseConnection();
+        String query = String.format("INSERT INTO CUSTOMER (first_name, last_name, email, password, mobile, address) values('%s','%s','%s','%s','%s','%s')", firstName, lastName, email, getEncryptedPassword(password), mobile, address);
+        int rowCount = 0;
+        try{
+            rowCount = dbCon.executeUpdateQuery(query);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return rowCount!=0;
     }
 }
