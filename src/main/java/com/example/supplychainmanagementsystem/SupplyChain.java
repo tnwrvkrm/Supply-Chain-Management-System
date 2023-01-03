@@ -18,6 +18,8 @@ public class SupplyChain extends Application {
     Pane bodyPane = new Pane();
     LoginOrSignUp loginAndSignUp = new LoginOrSignUp();
     ProductDetails productDetails = new ProductDetails();
+
+    Button globalHomeButton;
     Button globalLoginButton;
     Button globalLogoutButton;
     Button globalSignUpButton;
@@ -29,12 +31,22 @@ public class SupplyChain extends Application {
         Button searchButton = new Button("Search");
         globalLoginButton = new Button("Log In");
         globalLogoutButton = new Button("Log Out");
+        globalHomeButton = new Button("Home");
         globalLogoutButton.setVisible(false);
         globalSignUpButton = new Button("Sign Up");
         globalLoginButton.setMinWidth(70);
         globalLogoutButton.setMinWidth(70);
         globalSignUpButton.setMinWidth(70);
+        globalHomeButton.setMinWidth(70);
         customerEmailLabel = new Label("Welcome User");
+
+        globalHomeButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                bodyPane.getChildren().clear();
+                bodyPane.getChildren().add(productDetails.getAllProducts());
+            }
+        });
         searchButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -78,12 +90,13 @@ public class SupplyChain extends Application {
         gridPane.setAlignment(Pos.CENTER);
         gridPane.setStyle("-fx-background-color: #E6E6FA");
 
-        gridPane.add(searchfield,0,0);
-        gridPane.add(searchButton,1,0);
-        gridPane.add(globalLoginButton,2,0);
-        gridPane.add(globalLogoutButton,2,0);
-        gridPane.add(customerEmailLabel,3,0);
-        gridPane.add(globalSignUpButton,4,0);
+        gridPane.add(globalHomeButton,0,0);
+        gridPane.add(searchfield,1,0);
+        gridPane.add(searchButton,2,0);
+        gridPane.add(globalLoginButton,3,0);
+        gridPane.add(globalLogoutButton,3,0);
+        gridPane.add(customerEmailLabel,4,0);
+        gridPane.add(globalSignUpButton,5,0);
 
         return gridPane;
     }
@@ -172,7 +185,7 @@ public class SupplyChain extends Application {
                 }
                 else{
                     dialogBox("Email Already registered");
-                    loginPage();
+//                    globalLoginButton.getOnAction();
                     bodyPane.getChildren().clear();
                     bodyPane.getChildren().add(loginPage());
                 }

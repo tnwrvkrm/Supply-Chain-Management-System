@@ -29,7 +29,7 @@ public class LoginOrSignUp {
         return null;
     }
     public String customerLogin(String email, String password){
-        String query = String.format("SELECT * FROM customer WHERE email = '%s' AND password = '%s'", email, password);
+        String query = String.format("SELECT * FROM customer WHERE email = '%s' AND password = '%s'", email, getEncryptedPassword(password));
         try{
             DatabaseConnection dbCon = new DatabaseConnection();
             ResultSet rs = dbCon.getQueryTable(query);
