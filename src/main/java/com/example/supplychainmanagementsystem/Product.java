@@ -76,7 +76,7 @@ public class Product {
         DatabaseConnection databaseConnection = new DatabaseConnection();
         ObservableList<Product> productList = FXCollections.observableArrayList();
         String selectProducts = String.format("SELECT cart.product_id, product.name, product.price FROM cart JOIN product ON cart.product_id = product.product_id JOIN customer ON cart.customer_id = customer.customer_id\n" +
-                "WHERE customer.email = '%s'", customerEmail);
+                "WHERE customer.email = '%s' group by product.product_id", customerEmail);
         try{
             ResultSet rs = databaseConnection.getQueryTable(selectProducts);
             while(rs.next()){
